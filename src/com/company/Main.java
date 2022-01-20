@@ -33,7 +33,7 @@ public class Main {
             System.out.println("Cost of ceiling £" + costOfCeiling);
 
             double hoursToPaintOneWall = 2.3;
-            double hourRateForPainterInPounds = 15.8d;
+            double hourRateForPainterInPounds = 15.9d;
 
 
             double timeToCompleteWallPainting = hoursToPaintOneWall * 4;
