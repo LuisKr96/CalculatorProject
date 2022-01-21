@@ -7,9 +7,6 @@ public class Main {
 
         {
             String PaintName = "PaintAHouse";
-            int squareMeterCoveredWithOneLitre = 9;
-            int paintBucketCost = 7;
-
 
 
             Scanner input = new Scanner(System.in);
@@ -22,12 +19,19 @@ public class Main {
             wallHeight = input.nextInt();
 
             int surfaceAreaOfOneWall = wallHeight * wallLength;
-            int totalArea = surfaceAreaOfOneWall * 4;
+            double hoursToPaintOneWall =surfaceAreaOfOneWall / 40;
 
+            int totalArea = surfaceAreaOfOneWall * 4;
+            int paintBucketCost = 7;
             double bucketsNeeded = (double) totalArea / paintBucketCost;
             int myInt = (int) Math.ceil(bucketsNeeded);
 
 
+            double hoursToPaintEveryWall = hoursToPaintOneWall * 4;
+
+            double rateToPaintEveryWall = 20.8d * hoursToPaintEveryWall;
+
+            System.out.println("Total cost for painter £" + rateToPaintEveryWall);
 
             if ((bucketsNeeded * paintBucketCost) <= totalArea) {
                 System.out.println("Buckets needed " + myInt++);
@@ -41,28 +45,21 @@ public class Main {
 
 
             double ceilingArea = wallLength * wallLength;
+
             double bucketsForCeiling = ceilingArea / paintBucketCost;
 
             double costOfCeiling = bucketsForCeiling * paintBucketCost;
 
             System.out.println("Cost of ceiling £" + costOfCeiling);
 
-            double hoursToPaintOneWall = 2.3;
-            double hourRateForPainterInPounds = 20.8d;
 
 
-            double timeToCompleteWallPainting = hoursToPaintOneWall * 4;
-
-
-            double totalRateForCompletion = timeToCompleteWallPainting * hourRateForPainterInPounds;
-            System.out.println("Total cost for painter £" + totalRateForCompletion);
-
-            String hireOrNoHire = (totalRateForCompletion <= 150) ? "Hire painter" : "Don't hire painter";
+            String hireOrNoHire = (rateToPaintEveryWall <= 150) ? "Hire painter" : "Don't hire painter";
             System.out.println(hireOrNoHire);
 
             int dailyRateByMicrosoftPaint = 140;
 
-            if(dailyRateByMicrosoftPaint <= totalRateForCompletion){
+            if(dailyRateByMicrosoftPaint <= rateToPaintEveryWall){
                 System.out.println("Hire Microsoft Paint");
             } else
             {
@@ -73,7 +70,7 @@ public class Main {
             int dayOfWeek;
 
             System.out.println("Enter day of week:");
-            dayOfWeek = input.nextInt();
+            dayOfWeek = rate.nextInt();
 
 
             switch(dayOfWeek){
@@ -83,7 +80,55 @@ public class Main {
                 case 6,7:
                     System.out.println("Weekend rate");
                 break;
+                default:
+                    System.out.println("Not available");
             }
+
+            do {
+                System.out.println("You are not getting charged an additional rate");
+                dayOfWeek++;
+            }
+            while(dayOfWeek <= 5);
+
+            Scanner time = new Scanner(System.in);
+            int timeAvailable;
+
+            System.out.println("Enter time (24hrs) to check availability:");
+            timeAvailable = time.nextInt();
+
+            if(timeAvailable < 9 || timeAvailable > 17){
+                System.out.println("Not available");
+            } else {
+                System.out.println("Available");
+            };
+
+            for(timeAvailable = 9; timeAvailable <= 17; timeAvailable++){
+                System.out.println("Available: " + timeAvailable + ":00");
+            }
+
+            System.out.println("What colour paint would you like?");
+
+            String[] colourPaint = {"White", "Grey", "Blue", "Red", "Green"};
+            for (int colour = 0; colour < colourPaint.length; colour++){
+                System.out.println(colourPaint[colour]);
+            }
+
+            String colourChosen = time.next();
+            if(colourChosen.contains("White")){
+                System.out.println("Low stock");
+            } else if (colourChosen.contains("Grey")){
+                System.out.println("Colour is available");
+            } else if (colourChosen.contains("Blue")){
+                System.out.println("No stock left");
+            } else if (colourChosen.contains("Red")){
+                System.out.println("Colour is available");
+            } else if (colourChosen.contains("Green")){
+                System.out.println("Colour is available");
+            } else{
+                System.out.println("ERROR");
+            }
+
+
 
 
         }
