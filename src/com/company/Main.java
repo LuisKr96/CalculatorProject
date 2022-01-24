@@ -3,6 +3,15 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
+
+    static int calculateWallArea(int wallLength, int wallHeight){
+        int surfaceAreaOfWall;
+
+        surfaceAreaOfWall = wallHeight * wallLength;
+        return surfaceAreaOfWall;
+    }
+
+
     public static void main(String[] args) {
 
         {
@@ -83,12 +92,12 @@ public class Main {
                 default:
                     System.out.println("Not available");
             }
-
             do {
                 System.out.println("You are not getting charged an additional rate");
                 dayOfWeek++;
             }
             while(dayOfWeek <= 5);
+
 
             Scanner time = new Scanner(System.in);
             int timeAvailable;
@@ -128,8 +137,7 @@ public class Main {
                 System.out.println("ERROR");
             }
 
-
-
+            System.out.println(calculateWallArea(20,20));
 
         }
 
